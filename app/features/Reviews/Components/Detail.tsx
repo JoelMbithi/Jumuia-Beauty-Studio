@@ -41,7 +41,7 @@ const Detail = () => {
           <div className="flex flex-col gap-6">
             <p className="text-amber-500 text-xs tracking-[0.4em] uppercase flex items-center gap-3">
               <span className="w-8 h-px bg-amber-400 inline-block" />
-              Est. 2014
+              Est. 2026
             </p>
             <h2
               className="text-5xl md:text-6xl font-bold text-gray-900 leading-[1.05]"
@@ -63,7 +63,7 @@ const Detail = () => {
           <div className="flex flex-col gap-6 pt-2 lg:pt-14">
             {[
               "Here at Jumuia we have over 10 years of experience in the hair and beauty industry.",
-              "We are passionate about what we do and, since opening our doors in 2014, we aim to create a relaxed and fun environment for our clients to enjoy.",
+              "We are passionate about what we do and, since opening our doors in 2026, we aim to create a relaxed and fun environment for our clients to enjoy.",
               "The products we use are, we believe, the best in the industry. Our creative and dedicated team are always learning — we believe in regularly updating our skills and knowledge to give every client the best possible service."
             ].map((text, i) => (
               <p key={i} className="text-gray-500 text-sm leading-relaxed border-l-2 border-amber-200 pl-4">

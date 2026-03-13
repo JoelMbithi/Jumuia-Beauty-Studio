@@ -4,7 +4,7 @@ import Reward from './Reward'
 import HomeAbout from './HomeAbout'
 import Searvices from '../../features/Services/components/Searvices'
 import WhyChooseUs from './WhyChooseUs'
-import Detail from './Detail'
+import Detail from '../../features/Reviews/Components/Detail'
 import InTouch from './InTouch'
 import Navbar from './Navbar'
 

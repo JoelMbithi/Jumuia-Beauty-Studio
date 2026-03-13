@@ -1,10 +1,11 @@
-"use client"
 import React, { useState, useEffect, useRef } from 'react'
+import { useRouter } from 'next/navigation'
 
 type SubmenuItem = {
   name: string;
   path: string;
   description?: string;
+  url?: string;
 }
 
 type MenuItem = {
@@ -15,6 +16,7 @@ type MenuItem = {
 }
 
 const Navbar = () => {
+  const router = useRouter()
   const [scrolled, setScrolled] = useState<boolean>(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false)
   const [activeSection, setActiveSection] = useState<string>('Home')
@@ -23,42 +25,49 @@ const Navbar = () => {
 
   const menuItems: MenuItem[] = [
     { name: 'Home', hasDropdown: false, path: 'home' },
-    {
-      name: 'About', hasDropdown: true, path: 'about',
-      submenu: [
-        { name: 'Our Story', path: 'story', description: 'Discover our journey and passion for beauty' },
-        { name: 'Team', path: 'team', description: 'Meet our expert stylists and professionals' },
-        { name: 'Gallery', path: 'gallery', description: 'Browse our beautiful transformations' },
-        { name: 'Awards', path: 'awards', description: 'Recognition for our excellence' }
-      ]
-    },
+   {
+  name: 'About', hasDropdown: true, path: 'about',
+  submenu: [
+    { name: 'Our Story', path: 'story', description: 'Discover our journey and passion for beauty', url: '/features/About#story' },
+    { name: 'Team', path: 'team', description: 'Meet our expert stylists and professionals', url: '/features/About#team' },
+    { name: 'Gallery', path: 'gallery', description: 'Browse our beautiful transformations', url: '/features/About#gallery' },
+    { name: 'Awards', path: 'awards', description: 'Recognition for our excellence', url: '/features/About#awards' }
+  ]
+},
     {
       name: 'Services', hasDropdown: true, path: 'services',
       submenu: [
-        { name: 'Hair Care', path: 'hair', description: 'Cut, color, styling & treatments' },
-        { name: 'Skin Care', path: 'skin', description: 'Facials, peels & rejuvenation' },
-        { name: 'Nail Art', path: 'nails', description: 'Manicure, pedicure & designs' },
-        { name: 'Makeup', path: 'makeup', description: 'Bridal, event & everyday glam' },
-        { name: 'Bridal', path: 'bridal', description: 'Complete bridal packages' }
+        { name: 'Hair Care', path: 'hair', description: 'Cut, color, styling & treatments', url: '/features/Services' },
+        { name: 'Skin Care', path: 'skin', description: 'Facials, peels & rejuvenation', url: '/features/Services' },
+        { name: 'Nail Art', path: 'nails', description: 'Manicure, pedicure & designs', url: '/features/Services' },
+        { name: 'Makeup', path: 'makeup', description: 'Bridal, event & everyday glam', url: '/features/Services' },
+        { name: 'Bridal', path: 'bridal', description: 'Complete bridal packages', url: '/features/Services' }
       ]
     },
     {
       name: 'Offers', hasDropdown: true, path: 'offers',
       submenu: [
-        { name: 'Special Packages', path: 'packages', description: 'Curated beauty experiences' },
-        { name: 'Seasonal Deals', path: 'seasonal', description: 'Limited time offers' },
-        { name: 'Membership', path: 'membership', description: 'Exclusive member benefits' },
-        { name: 'Gift Cards', path: 'gifts', description: 'Perfect gifts for loved ones' }
+        { name: 'Special Packages', path: 'packages', description: 'Curated beauty experiences', url: '/features/Offers#packages' },
+        { name: 'Seasonal Deals', path: 'seasonal', description: 'Limited time offers', url: '/features/Offers#seasonalDeals' },
+        { name: 'Membership', path: 'membership', description: 'Exclusive member benefits', url: '/features/Offers#membership' },
+        { name: 'Gift Cards', path: 'gifts', description: 'Perfect gifts for loved ones', url: '/features/Offers#gifts' }
       ]
     },
-    { name: 'Reviews', hasDropdown: false, path: 'reviews' },
+    { name: 'Reviews', hasDropdown: true, path: 'reviews',
+      submenu: [
+        {name: 'Customer Testimonials', path: 'testimonials', description: 'Hear from our satisfied clients', url: '/features/Reviews#testimonials' },
+        {name: 'Before & After', path: 'beforeafter', description: 'See our stunning transformations', url: '/features/Reviews#beforeafter' },
+        {name: 'Press & Media', path: 'press', description: 'Our features in the media', url: '/features/Reviews#press' },
+        {name: 'Awards & Recognition', path: 'awards', description: 'Our accolades and achievements', url: '/features/Reviews#awards' }
+      ]
+     },
     {
       name: 'Contact', hasDropdown: true, path: 'contact',
       submenu: [
-        { name: 'Locations', path: 'locations', description: 'Find a salon near you' },
-        { name: 'Book Appointment', path: 'book', description: 'Schedule your visit' },
-        { name: 'FAQ', path: 'faq', description: 'Answers to common questions' },
-        { name: 'Support', path: 'support', description: 'Get in touch with us' }
+        { name: 'Locations', path: 'locations', description: 'Find a salon near you', url: '/contact/locations' },
+        { name: 'Book Appointment', path: 'book', description: 'Schedule your visit', url: '/contact/book' },
+        { name: 'FAQ', path: 'faq', description: 'Answers to common questions', url: '/contact/faq' },
+        { name: 'Support', path: 'support', description: 'Get in touch with us', url: '/contact/support' }
       ]
     }
   ]
@@ -102,17 +111,30 @@ const Navbar = () => {
       setOpenDropdown(null)
     }
   }
-const handleDropdownClick = (itemName: string, e: React.MouseEvent) => {
+
+  const handleDropdownClick = (itemName: string, e: React.MouseEvent) => {
     e.preventDefault()
-   
     setOpenDropdown(openDropdown === itemName ? null : itemName)
   }
-  const handleSubmenuClick = (path: string) => {
-    scrollToSection(path)
+
+  const handleSubmenuClick = (path: string, url?: string, e?: React.MouseEvent) => {
+    if (e) {
+      e.preventDefault()
+      e.stopPropagation()
+    }
+    
+    console.log("Submenu clicked with path:", path, "url:", url)
+    
+    if (url) {
+      router.push(url)
+    } else {
+      scrollToSection(path)
+    }
+    
     setOpenDropdown(null)
+    setMobileMenuOpen(false)
   }
 
-  // Get the active dropdown item
   const activeDropdownItem = openDropdown ? menuItems.find(item => item.name === openDropdown) : null
 
   return (
@@ -139,24 +161,24 @@ const handleDropdownClick = (itemName: string, e: React.MouseEvent) => {
           {menuItems.map((item) => (
             <li key={item.name} className="relative">
               <button
-  onClick={(e) => {
-    if (item.hasDropdown) {
-      handleDropdownClick(item.name, e);
-    } else {
-      scrollToSection(item.name);
-    }
-  }}
-  className={`cursor-pointer transition-all duration-300 relative flex items-center px-2 py-1 ${
-    activeSection === item.name || openDropdown === item.name ? 'text-amber-400' : 'hover:text-amber-400'
-  }`}
->
-  {item.name}
-  <span
-    className={`absolute -bottom-1 left-0 h-px bg-amber-400 transition-all duration-300 ${
-      activeSection === item.name || openDropdown === item.name ? 'w-full' : 'w-0 group-hover:w-full'
-    }`}
-  />
-</button>
+                onClick={(e) => {
+                  if (item.hasDropdown) {
+                    handleDropdownClick(item.name, e);
+                  } else {
+                    scrollToSection(item.name);
+                  }
+                }}
+                className={`cursor-pointer transition-all duration-300 relative flex items-center px-2 py-1 ${
+                  activeSection === item.name || openDropdown === item.name ? 'text-amber-400' : 'hover:text-amber-400'
+                }`}
+              >
+                {item.name}
+                <span
+                  className={`absolute -bottom-1 left-0 h-px bg-amber-400 transition-all duration-300 ${
+                    activeSection === item.name || openDropdown === item.name ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`}
+                />
+              </button>
             </li>
           ))}
         </ul>
@@ -184,32 +206,32 @@ const handleDropdownClick = (itemName: string, e: React.MouseEvent) => {
             <ul className="flex flex-col gap-2">
               {menuItems.map((item) => (
                 <li key={item.name} className="border-b border-white/5 last:border-0">
-               <button
-  onClick={(e) => {
-    if (item.hasDropdown) {
-      handleDropdownClick(item.name, e);
-    } else {
-      scrollToSection(item.name);
-    }
-  }}
-  className={`cursor-pointer transition-all duration-300 relative flex items-center px-2 py-1 ${
-    activeSection === item.name || openDropdown === item.name ? 'text-amber-400' : 'hover:text-amber-400'
-  }`}
->
-  {item.name}
-  <span
-    className={`absolute -bottom-1 left-0 h-px bg-amber-400 transition-all duration-300 ${
-      activeSection === item.name || openDropdown === item.name ? 'w-full' : 'w-0 group-hover:w-full'
-    }`}
-  />
-</button>
+                  <button
+                    onClick={(e) => {
+                      if (item.hasDropdown) {
+                        handleDropdownClick(item.name, e);
+                      } else {
+                        scrollToSection(item.name);
+                      }
+                    }}
+                    className={`cursor-pointer transition-all duration-300 relative flex items-center px-2 py-1 ${
+                      activeSection === item.name || openDropdown === item.name ? 'text-amber-400' : 'hover:text-amber-400'
+                    }`}
+                  >
+                    {item.name}
+                    <span
+                      className={`absolute -bottom-1 left-0 h-px bg-amber-400 transition-all duration-300 ${
+                        activeSection === item.name || openDropdown === item.name ? 'w-full' : 'w-0 group-hover:w-full'
+                      }`}
+                    />
+                  </button>
 
                   {item.hasDropdown && openDropdown === item.name && item.submenu && (
                     <div className="pl-4 pb-2 space-y-2 animate-slideDown">
                       {item.submenu.map((subItem) => (
                         <button
                           key={subItem.name}
-                          onClick={() => handleSubmenuClick(subItem.path)}
+                          onClick={(e) => handleSubmenuClick(subItem.path, subItem.url, e)}
                           className="w-full text-left py-2 px-3 text-white/60 hover:text-amber-400 text-xs tracking-wider cursor-pointer transition-colors border-l border-white/10 hover:border-amber-400"
                         >
                           {subItem.name}
@@ -230,45 +252,42 @@ const handleDropdownClick = (itemName: string, e: React.MouseEvent) => {
       </nav>
 
       {/* Full-width Dropdown Panel */}
-      {openDropdown && activeDropdownItem?.submenu && (
-        <div 
-          className="fixed left-0 right-0 w-full z-40 bg-black/95 backdrop-blur-lg border-t border-white/10 shadow-2xl"
-          style={{ 
-            top: scrolled ? '72px' : '80px',
-          }}
-        >
-          <div className="w-full px-6 md:px-16 lg:px-24 py-12">
-            {/* Dropdown header */}
-            <div className="flex items-center gap-3 mb-8">
-              <span className="w-8 h-px bg-amber-400/30 inline-block" />
-              <span className="text-amber-400/50 text-xs tracking-[0.4em] uppercase">
-                {openDropdown}
-              </span>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-              {activeDropdownItem.submenu.map((subItem) => (
-                <div
-                  key={subItem.name}
-                  onClick={() => handleSubmenuClick(subItem.path)}
-                  className="group cursor-pointer p-5 bg-white/5 hover:bg-white/10 rounded-lg border border-white/5 hover:border-amber-400/30 transition-all duration-300"
-                >
-                  <h3 className="text-amber-400 text-sm font-semibold mb-2 group-hover:translate-x-1 transition-transform" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1rem' }}>
-                    {subItem.name}
-                  </h3>
-                  {subItem.description && (
-                    <p className="text-white/50 text-xs leading-relaxed">{subItem.description}</p>
-                  )}
-                  <div className="mt-4 flex items-center gap-2 text-amber-400/50 text-[10px] tracking-widest uppercase">
-                    <span>View</span>
-                    <span className="group-hover:translate-x-2 transition-transform inline-block">→</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
+     {openDropdown && activeDropdownItem?.submenu && (
+  <div 
+    className="fixed left-0 right-0 z-40 bg-whit/10 backdrop-blur-md  shadow-lg"
+    style={{ 
+      top: scrolled ? '72px' : '80px',
+    }}
+  >
+    <div className="max-w-7xl mx-auto px-6 md:px-12 py-8">
+      {/* Category title */}
+      <p className="text-xs text-amber-500 tracking-wider mb-6 flex items-center gap-2">
+        <span className="w-6 h-px bg-amber-300"></span>
+        {openDropdown}
+      </p>
+      
+      {/* Simple, clean list */}
+      <div className="flex flex-wrap gap-x-12 gap-y-6">
+        {activeDropdownItem.submenu.map((subItem) => (
+          <button
+            key={subItem.name}
+            onClick={(e) => handleSubmenuClick(subItem.path, subItem.url, e)}
+            className="group text-left"
+          >
+            <span className="text-gray-900 text-sm font-medium group-hover:text-amber-600 transition-colors">
+              {subItem.name}
+            </span>
+            {subItem.description && (
+              <p className="text-xs text-gray-400 group-hover:text-amber-500/70 mt-0.5 max-w-[180px]">
+                {subItem.description}
+              </p>
+            )}
+          </button>
+        ))}
+      </div>
+    </div>
+  </div>
+)}
 
       <style jsx>{`
         @keyframes fadeIn {

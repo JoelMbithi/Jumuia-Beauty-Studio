@@ -77,7 +77,7 @@ const HomeAbout = () => {
               <div className="absolute bottom-6 left-6 z-30 bg-white/95 backdrop-blur-sm px-5 py-3 rounded-xl shadow-lg flex items-center gap-3">
                 <div className="w-8 h-8 rounded-full bg-gradient-to-br from-amber-400 to-rose-400 flex items-center justify-center text-white text-sm">✦</div>
                 <div>
-                  <p className="text-[10px] tracking-widest uppercase text-gray-500">Est. 2010</p>
+                  <p className="text-[10px] tracking-widest uppercase text-gray-500">Est. 2026</p>
                   <p className="text-base font-bold text-gray-800" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Jumuia</p>
                 </div>
               </div>
