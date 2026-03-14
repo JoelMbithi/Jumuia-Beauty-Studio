@@ -23,6 +23,7 @@ const Navbar = () => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
   const navRef = useRef<HTMLDivElement>(null)
 
+
   const menuItems: MenuItem[] = [
     { name: 'Home', hasDropdown: false, path: 'home' },
    {
@@ -64,10 +65,10 @@ const Navbar = () => {
     {
       name: 'Contact', hasDropdown: true, path: 'contact',
       submenu: [
-        { name: 'Locations', path: 'locations', description: 'Find a salon near you', url: '/contact/locations' },
-        { name: 'Book Appointment', path: 'book', description: 'Schedule your visit', url: '/contact/book' },
-        { name: 'FAQ', path: 'faq', description: 'Answers to common questions', url: '/contact/faq' },
-        { name: 'Support', path: 'support', description: 'Get in touch with us', url: '/contact/support' }
+        { name: 'Locations', path: 'locations', description: 'Find a salon near you', url: '/features/Contact' },
+        { name: 'Book Appointment', path: 'book', description: 'Schedule your visit', url: '/features/Contact' },
+        { name: 'FAQ', path: 'faq', description: 'Answers to common questions', url: '/features/Contact' },
+        { name: 'Support', path: 'support', description: 'Get in touch with us', url: '/features/Contact' }
       ]
     }
   ]
@@ -184,7 +185,7 @@ const Navbar = () => {
         </ul>
 
         {/* Book Now CTA */}
-        <button className="hidden md:block relative overflow-hidden group">
+        <button onClick= {() => router.push('/features/BookAppointment')} className="hidden md:block relative overflow-hidden group">
           <span className="relative z-10 text-xs tracking-widest uppercase border border-amber-400 text-amber-400 px-6 py-2.5 hover:text-black transition-colors duration-300 rounded-sm block">
             Book Now
           </span>
@@ -242,7 +243,7 @@ const Navbar = () => {
                 </li>
               ))}
               <li className="pt-6">
-                <button className="w-full bg-amber-400 text-black text-sm tracking-widest uppercase px-6 py-4 rounded-sm font-semibold hover:bg-amber-300 transition-colors">
+                <button  onClick={() => router.push('/features/BookAppointment')}  className="w-full bg-amber-400 text-black text-sm tracking-widest uppercase px-6 py-4 rounded-sm font-semibold hover:bg-amber-300 transition-colors">
                   Book Now
                 </button>
               </li>

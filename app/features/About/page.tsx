@@ -175,12 +175,12 @@ const AboutPage = () => {
       category: "Skincare"
     },
     {
-      image: "https://images.unsplash.com/photo-1610992015732-2449b0bb0a86?w=600&auto=format",
+      image: "https://images.unsplash.com/photo-1772322586711-22f84f5f3432?q=80&w=627&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       title: "Nail Artistry",
       category: "Nails"
     },
     {
-      image: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=600&auto=format",
+      image: "https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       title: "Salon Interior",
       category: "Space"
     }
@@ -214,7 +214,7 @@ const AboutPage = () => {
       {/* Back Button - Responsive */}
       <button 
         onClick={() => router.back()}
-        className="fixed top-3 left-3 sm:top-4 sm:left-4 md:top-6 md:left-6 z-50 flex items-center gap-1 sm:gap-2 text-gray-600 hover:text-amber-600 transition-colors group bg-white/80 backdrop-blur-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-sm text-xs sm:text-sm"
+        className="fixed top-3 left-3 sm:top-4 sm:left-4 md:top-6 md:left-6 z-50 flex items-center gap-1 sm:gap-2 text-gray-600 hover:text-amber-400 transition-colors group bg-white/80 backdrop-blur-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-sm text-xs sm:text-sm"
       >
         <ChevronLeft className="w-3 h-3 sm:w-4 sm:h-4 group-hover:-translate-x-1 transition-transform" />
         <span>Back</span>
@@ -267,10 +267,10 @@ const AboutPage = () => {
           <div className={`space-y-4 sm:space-y-5 md:space-y-6 transition-all duration-1000 transform ${
             isStoryVisible ? 'translate-x-0 opacity-100' : '-translate-x-12 opacity-0'
           }`}>
-            <span className="text-amber-600 text-[10px] sm:text-xs tracking-widest uppercase">Our Story</span>
+            <span className="text-amber-400 text-[10px] sm:text-xs tracking-widest uppercase">Our Story</span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-gray-900" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
               Started with a 
-              <span className="block text-amber-600 italic">dream and a chair</span>
+              <span className="block text-amber-400 italic">dream and a chair</span>
             </h2>
             <div className="space-y-3 sm:space-y-4 text-gray-600 text-sm sm:text-base leading-relaxed">
               <p>
@@ -324,10 +324,10 @@ const AboutPage = () => {
           <div className={`text-center max-w-2xl mx-auto mb-8 sm:mb-12 md:mb-16 transition-all duration-1000 transform ${
             isValuesVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
           }`}>
-            <span className="text-amber-600 text-[10px] sm:text-xs tracking-widest uppercase">What we believe</span>
+            <span className="text-amber-400 text-[10px] sm:text-xs tracking-widest uppercase">What we believe</span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-gray-900 mt-2 sm:mt-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
               Beauty with 
-              <span className="block text-amber-600 italic">heart</span>
+              <span className="block text-amber-400 italic">heart</span>
             </h2>
           </div>
 
@@ -342,7 +342,7 @@ const AboutPage = () => {
                 }`}
                 style={{ transitionDelay: `${index * 150}ms` }}
               >
-                <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center mb-3 sm:mb-4 md:mb-6">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-amber-100 text-amber-400 flex items-center justify-center mb-3 sm:mb-4 md:mb-6">
                   {value.icon}
                 </div>
                 <h3 className="text-base sm:text-lg md:text-xl font-medium text-gray-900 mb-2 sm:mb-3">{value.title}</h3>
@@ -373,7 +373,7 @@ const AboutPage = () => {
               }`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-amber-600 mb-1 sm:mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-amber-400 mb-1 sm:mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                 {stat.value}{stat.suffix}
               </div>
               <div className="text-[10px] sm:text-xs md:text-sm text-gray-500 tracking-wide">{stat.label}</div>
@@ -391,14 +391,14 @@ const AboutPage = () => {
         <div className={`text-center max-w-2xl mx-auto mb-8 sm:mb-12 md:mb-16 transition-all duration-1000 transform ${
           isTeamVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
         }`}>
-          <span className="text-amber-600 text-[10px] sm:text-xs tracking-widest uppercase">The faces of Jumuia</span>
+          <span className="text-amber-400 text-[10px] sm:text-xs tracking-widest uppercase">The faces of Jumuia</span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-gray-900 mt-2 sm:mt-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             Meet the 
-            <span className="block text-amber-600 italic">team</span>
+            <span className="block text-amber-400 italic">team</span>
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8">
           {team.map((member, index) => (
             <div 
               key={index}
@@ -423,7 +423,7 @@ const AboutPage = () => {
               </div>
               
               <h3 className="text-base sm:text-lg md:text-xl font-medium text-gray-900">{member.name}</h3>
-              <p className="text-amber-600 text-xs sm:text-sm mb-1 sm:mb-2">{member.role}</p>
+              <p className="text-amber-400 text-xs sm:text-sm mb-1 sm:mb-2">{member.role}</p>
               <p className="text-gray-500 text-[10px] sm:text-xs">With us since {member.since}</p>
               <p className="text-gray-500 text-xs sm:text-sm mt-2 sm:mt-3 leading-relaxed">{member.bio}</p>
             </div>
@@ -440,10 +440,10 @@ const AboutPage = () => {
         <div className={`text-center max-w-2xl mx-auto mb-8 sm:mb-12 md:mb-16 transition-all duration-1000 transform ${
           isAwardsVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
         }`}>
-          <span className="text-amber-600 text-[10px] sm:text-xs tracking-widest uppercase">Recognition</span>
+          <span className="text-amber-400 text-[10px] sm:text-xs tracking-widest uppercase">Recognition</span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-gray-900 mt-2 sm:mt-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             Awards & 
-            <span className="block text-amber-600 italic">Accolades</span>
+            <span className="block text-amber-400 italic">Accolades</span>
           </h2>
         </div>
 
@@ -474,10 +474,10 @@ const AboutPage = () => {
         <div className={`text-center max-w-2xl mx-auto mb-8 sm:mb-12 md:mb-16 transition-all duration-1000 transform ${
           isGalleryVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
         }`}>
-          <span className="text-amber-600 text-[10px] sm:text-xs tracking-widest uppercase">Our Work</span>
+          <span className="text-amber-400 text-[10px] sm:text-xs tracking-widest uppercase">Our Work</span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-gray-900 mt-2 sm:mt-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             Beautiful 
-            <span className="block text-amber-600 italic">Transformations</span>
+            <span className="block text-amber-400 italic">Transformations</span>
           </h2>
         </div>
 
@@ -524,7 +524,7 @@ const AboutPage = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
-            <button className="bg-amber-400 hover:bg-amber-300 text-gray-900 px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-medium text-sm sm:text-base transition-all hover:shadow-xl transform hover:-translate-y-1">
+            <button onClick= {() => router.push('/features/BookAppointment')} className="bg-amber-400 hover:bg-amber-300 text-gray-900 px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-medium text-sm sm:text-base transition-all hover:shadow-xl transform hover:-translate-y-1">
               Book an Appointment
             </button>
             <button className="border border-white/30 hover:border-amber-400 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl text-sm sm:text-base transition-all hover:bg-white/10">

@@ -1,6 +1,6 @@
 import React from 'react'
-import LandingPage from './Components/Home/LandingPage'
-import Reward from './Components/Home/Reward'
+import LandingPage from './features/Components/Home/LandingPage'
+import Reward from './features/Components/Home/Reward'
 
 const page = () => {
   return (

@@ -3,17 +3,17 @@ import React, { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { ChevronLeft } from 'lucide-react'
 
-const categories = ['All', 'Skin Care', 'Hair Tattoo', 'Lips Tattoo', 'Nail Art']
+const categories = ['All', 'Skin Care & Facial', 'Eyebrows tinting & trimming', 'Lips Tattoo', 'Manicure & Pendicure']
 
 const services = [
   {
-    id: 1, category: 'Skin Care', title: 'Skin Care',
+    id: 1, category: 'Skin Care', title: 'Skin Care & Facial',
     image: '/makeup.jpeg', desc: 'Radiant, healthy skin treatments',
     detail: 'Customised facials, chemical peels, and advanced skin rejuvenation tailored to your skin type.',
     duration: '60–90 min', from: 'KSh 2,500',
   },
   {
-    id: 2, category: 'Hair Tattoo', title: 'Hair Tattoo',
+    id: 2, category: 'Hair Tattoo', title: 'Eyebrows Tinting & Trimming',
     image: '/hair.jpeg', desc: 'Bold, precise hair artistry',
     detail: 'Scalp micropigmentation and precision hair tattoo techniques for a flawless finish.',
     duration: '90–120 min', from: 'KSh 4,000',
@@ -25,7 +25,7 @@ const services = [
     duration: '60 min', from: 'KSh 3,500',
   },
   {
-    id: 4, category: 'Nail Art', title: 'Nail Art',
+    id: 4, category: 'Nail Art', title: 'Manicure & Pendicure',
     image: '/nail.jpeg', desc: 'Creative nail expressions',
     detail: 'Gel manicures, intricate nail art, and premium nail extensions crafted by expert artists.',
     duration: '45–75 min', from: 'KSh 1,800',
@@ -225,7 +225,7 @@ export default function ServicesPage() {
 
       {/* ── Hero ── */}
       <section className="relative h-[300px] sm:h-[350px] md:h-96 flex items-end overflow-hidden">
-        <img src="/Salon.jpeg" alt="hero" className="absolute inset-0 w-full h-full object-cover" />
+        <img src="https://images.unsplash.com/photo-1633681926035-ec1ac984418a?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="hero" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10" />
         <button
           onClick={() => router.back()}
@@ -264,7 +264,7 @@ export default function ServicesPage() {
 
       {/* ── Service Cards ── */}
       <section className="px-3 sm:px-4 md:px-12 lg:px-20 py-8 sm:py-12 md:py-16">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5">
           {(activeFilter === 'All' ? services : services.filter(s => s.category === activeFilter)).map((service, idx) => (
             <div key={service.id} ref={el => { cardRefs.current[idx] = el }} data-idx={idx}
               className="group relative overflow-hidden rounded-xl sm:rounded-2xl cursor-pointer shadow-sm"
@@ -441,7 +441,7 @@ export default function ServicesPage() {
             Let our expert team craft a personalised beauty experience just for you.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-2 flex-wrap justify-center">
-            <button className="bg-amber-400 hover:bg-amber-300 text-black text-[10px] sm:text-xs tracking-widest uppercase font-semibold px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-sm transition-all duration-300">
+            <button onClick={() => router.push('/features/BookAppointment')} className="bg-amber-400 hover:bg-amber-300 text-black text-[10px] sm:text-xs tracking-widest uppercase font-semibold px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-sm transition-all duration-300">
               Book Now
             </button>
             <button onClick={() => router.back()} className="border border-white/20 text-white/60 hover:border-amber-400 hover:text-amber-400 text-[10px] sm:text-xs tracking-widest uppercase px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-sm transition-all duration-300">

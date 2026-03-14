@@ -8,10 +8,10 @@ const Services = () => {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([])
 
   const services = [
-    { id: 1, title: 'Skin Care',   image: '/makeup.jpeg', desc: 'Radiant, healthy skin treatments' },
-    { id: 2, title: 'Hair Tattoo', image: '/hair.jpeg',   desc: 'Bold, precise hair artistry'      },
+    { id: 1, title: 'Skin Care & Facia',   image: '/makeup.jpeg', desc: 'Radiant, healthy skin treatments' },
+    { id: 2, title: 'Eyebrows Tintin & Trimming', image: '/hair.jpeg',   desc: 'Bold, precise hair artistry'      },
     { id: 3, title: 'Lips Tattoo', image: '/lips.jpeg',   desc: 'Long-lasting lip perfection'      },
-    { id: 4, title: 'Nail Art',    image: '/nail.jpeg',   desc: 'Creative nail expressions'        },
+    { id: 4, title: 'Manicure & Pendicure',    image: '/nail.jpeg',   desc: 'Creative nail expressions'        },
   ]
 
   const route = useRouter()

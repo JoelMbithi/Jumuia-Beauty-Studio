@@ -2,15 +2,17 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Reward from './Reward'
 import HomeAbout from './HomeAbout'
-import Searvices from '../../features/Services/components/Searvices'
+import Searvices from '../../Services/components/Searvices'
 import WhyChooseUs from './WhyChooseUs'
-import Detail from '../../features/Reviews/Components/Detail'
+import Detail from '../../Reviews/Components/Detail'
 import InTouch from './InTouch'
 import Navbar from './Navbar'
+import { useRouter } from 'next/navigation'
 
 const LandingPage = () => {
   const [loaded, setLoaded] = useState(false)
   const heroRef = useRef<HTMLElement>(null)
+  const route = useRouter()
 
   useEffect(() => {
     // Small delay so fonts are ready before animating in
@@ -88,10 +90,10 @@ const LandingPage = () => {
                 transition: 'opacity 0.7s ease 0.55s, transform 0.7s ease 0.55s',
               }}
             >
-              <button className="bg-amber-400 hover:bg-amber-300 text-black text-xs tracking-widest uppercase font-semibold px-8 py-3.5 rounded-sm transition-colors duration-300">
+              <button onClick={() => route.push('/features/Services')} className="bg-amber-400 hover:bg-amber-300 text-black text-xs tracking-widest uppercase font-semibold px-8 py-3.5 rounded-sm transition-colors duration-300">
                 See Our Services
               </button>
-              <button className="border border-white/30 hover:border-amber-400 hover:text-amber-400 text-white text-xs tracking-widest uppercase px-8 py-3.5 rounded-sm transition-colors duration-300">
+              <button onClick ={() => route.push('/features/BookAppointment')} className="border border-white/30 hover:border-amber-400 hover:text-amber-400 text-white text-xs tracking-widest uppercase px-8 py-3.5 rounded-sm transition-colors duration-300">
                 Book Appointment
               </button>
             </div>
